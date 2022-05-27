@@ -1,0 +1,11 @@
+main {
+/*   text-align: center;
+  vertical-align: center; */
+  padding: 50px;
+  
+  color: black;
+}
+
+body, html {
+  background: url("groovepaper.png"), #ffffff;
+}
