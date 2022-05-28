@@ -49,16 +49,16 @@ Have someone in mind?  <a href="/request">Invite them to share.</a></p>
         {Boolean(writers?.length) &&
           writers.map((w, i) => {
             return (
-              <form key={i} action="https://recompiled-production.up.railway.app/create-checkout-session" method="POST" style={{marginTop: "15px"}}>
-                <div style={{display: "flex", justifyContent: "space-between", width: "800px", maxHeight: "40px", border: "1px solid grey", padding: "5px", alignItems: "center"}}>
+              <form key={i} action="https://recompiled-production.up.railway.app/create-checkout-session" method="POST" style={{marginTop: "15px", overflow: "auto", display: "flex", justifyContent: "space-between", width: "800px", maxHeight: "300px", border: "1px solid grey", padding: "15px", flexDirection: "column"}}>
                   <input type="text" readOnly name="writerEmail" value={w.email} hidden/>
                   <input type="text" readOnly name="descText" value={w.description} hidden/>
-                  <p style={{marginLeft: "4px"}}>Email: {w.email}</p>
-                  <p style={{marginLeft: "4px"}}>Desc: "{w.description}"</p>
-                  <p style={{marginLeft: "4px"}}>Subs: {w.subscribers}</p>
                   <input type="text" readOnly name="requestBool" value={"false"} hidden />
-                  <button>Subscribe</button>
-                </div>
+                  <p style={{marginTop:"0px"}}>Email: {w.email}</p>
+                  <p >Subs: {w.subscribers}</p>
+                  <div style={{overflow: "auto"}}><p>Desc: "{w.description}"</p>
+                    </div>
+      
+                  <button style={{width: "200px", marginTop: "5px", fontFamily: "monospace"}}>Subscribe</button>
               </form>
             )
           })

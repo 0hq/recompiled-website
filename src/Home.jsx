@@ -21,31 +21,25 @@ export default function SubHome() {
     const token = await magic.user.getIdToken({ lifespan: 90000 })
     setToken(token)
     console.log("is logged in", isLoggedIn)
-    if (isLoggedIn) {
-      // let result = await authenticate;
-      try {
-        let subs = await axios.get('https://recompiled-production.up.railway.app/get-user?id=' + token)
-        console.log(subs)
-        setSubs(subs.data)
-      } catch (e) {
-        console.log(e)
-      }
 
-      try {
-        let writer = await axios.get('https://recompiled-production.up.railway.app/get-writer?id=' + token)
-        console.log(writer)
-        setWriter(writer.data)
-      } catch (e) {
-        setWriter({ done: true })
-        console.log(e)
-      }
-
-      setLoading(false)
-
-
-    } else {
-      window.location.href = "/login-sub"
+    try {
+      let subs = await axios.get('https://recompiled-production.up.railway.app/get-user?id=' + token)
+      console.log(subs)
+      setSubs(subs.data)
+    } catch (e) {
+      console.log(e)
     }
+
+    try {
+      let writer = await axios.get('https://recompiled-production.up.railway.app/get-writer?id=' + token)
+      console.log(writer)
+      setWriter(writer.data)
+    } catch (e) {
+      // setWriter({ done: true })
+      console.log(e)
+    }
+
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -84,6 +78,7 @@ export default function SubHome() {
           </div>
           <div>
             <h2>Your newsletters</h2>
+            <p>You can access your Stripe merchant account here: <a href="https://connect.stripe.com/express_login">Login to Stripe</a></p>
             {writer ?.email &&
               <form action="https://recompiled-production.up.railway.app/cancel-writer" method="GET" style={{ marginTop: "15px" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", width: "900px", maxHeight: "40px", border: "1px solid grey", padding: "5px", alignItems: "center" }}>

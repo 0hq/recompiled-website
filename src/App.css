@@ -9,3 +9,6 @@ main {
 body, html {
   background: url("groovepaper.png"), #ffffff;
 }
+form {
+  font-family: monospace;
+ }
